@@ -43,35 +43,17 @@ function Upgrade-AllChocoApps {
     }
 }
 
-#Install Apps from a preset list
-function Install-AppsPreSet {
-    $packages = @(
-    "autodesk-fusion360",
-    "autocad",
-    "vscode",
-    "firefox",
-    "vlc"
-    )
-
-    foreach ($package in $packages) {
-        choco install $package -y
-        if ($?) {
-            Write-Output "$package installed successfully."
-        } else {
-            Write-Output "Failed to install $package."
-        }
-    }
-}
-
 # Main menu
 function Main-Menu {
     Clear-Host
     Write-Output "PCC's Chocolatey Management Script"
     Write-Output "1. Install Chocolatey"
     Write-Output "2. Install Chocolatey Applications"
-    Write-Output "3. Install Pre set list of Applications"
-    Write-Output "4. Upgrade All Installed Applications"
-    Write-Output "5. Exit"
+    Write-Output "3. Install Lab Applications"
+    Write-Output "4. Install Admin Applications"
+    Write-Output "5. Install Library Applications"
+    Write-Output "6. Upgrade All Installed Applications"
+    Write-Output "7. Exit"
     
     $choice = Read-Host "select an option (1-5)"
 
@@ -85,13 +67,21 @@ function Main-Menu {
             Install-ChocoApps -apps $appList
         }
         3 {
-            Write-Output "Installing Preset List of Applications"
-            Install-AppsPreSet
+            Write-Output "Installing Lab Applications"
+            Install-ChocoApps -apps 'autodesk-fusion360', 'autocad', 'vscode', 'firefox', 'vlc'
         }
         4 {
-            Upgrade-AllChocoApps
+            Write-Output "Installing Admin Applications"
+            Install-ChocoApps -apps 'firefox', 'vlc'
         }
         5 {
+            Write-Output "Installing Library Applications"
+            Install-ChocoApps -apps 'firefox', 'vlc'
+        }
+        6 {
+            Upgrade-AllChocoApps
+        }
+        7 {
             Write-Output "Exiting script."
             Exit
         }
