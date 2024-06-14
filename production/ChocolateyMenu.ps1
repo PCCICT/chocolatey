@@ -69,11 +69,9 @@ function Main-Menu {
     Write-Output "PCC's Chocolatey Management Script"
     Write-Output "1. Install Chocolatey"
     Write-Output "2. Install Chocolatey Applications"
-    Write-Output "3. Install Lab Desktop applications"
-    Write-Output "4. Install Admin Desktop applications (not in Use)"
-    Write-Output "5. Install Library Desktop applications (Not in Use)"
-    Write-Output "6. Upgrade All Installed Applications"
-    Write-Output "7. Exit"
+    Write-Output "3. Install Pre set list of Applications"
+    Write-Output "4. Upgrade All Installed Applications"
+    Write-Output "5. Exit"
     
     $choice = Read-Host "select an option (1-5)"
 
@@ -94,12 +92,6 @@ function Main-Menu {
             Upgrade-AllChocoApps
         }
         5 {
-            Write-Output "Not in use, plese try again"
-        }
-        6 {
-            Write-Output "Not in use, plese try again"
-        }
-        7 {
             Write-Output "Exiting script."
             Exit
         }
